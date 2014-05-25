@@ -16,7 +16,3 @@ Apply with patch -p0 -i <patchfile>
  - Makes end time be reset to one hour after the start time when adjusting start time
     (Same behavior as before, just adjusts the date too if needed, not only the time)
  - Sets default reminder for new events to 15 minutes
-
-#ClockAlarmDialog.patch
- - Makes a timed-out alarm trigger the same action as a snooze
- 
