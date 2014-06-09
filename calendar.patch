@@ -1,12 +1,12 @@
-diff -ru /usr/share/jolla-calendar/pages/EventEditPage.qml /home/nemo/tmp/EventEditPage.qml
---- /usr/share/jolla-calendar/pages/EventEditPage.qml	2014-05-24 16:38:25.295223179 +0200
-+++ /usr/share/jolla-calendar/pages/EventEditPage.qml	2014-05-24 16:39:33.414631159 +0200
-@@ -193,6 +193,12 @@
+diff -ru /usr/share/jolla-calendar/pbak2/EventEditPage.qml /usr/share/jolla-calendar/pages/EventEditPage.qml
+--- /usr/share/jolla-calendar/pages/EventEditPage.qml	2014-06-09 23:55:30.173094778 +0200
++++ /usr/share/jolla-calendar/pages/EventEditPage.qml	2014-06-09 21:09:44.706978917 +0200
+@@ -184,6 +184,12 @@
  
                              // end the event an hour after it starts (nice sane
                              // default)
-+                            //% If we want the event to become one hour after editing start time make sure 
-+                            //% that it doesnt just become n*days + 1h if start and end was on different days
++                            // If we want the event to become one hour after editing start time make sure 
++                            // that it doesnt just become n*days + 1h if start and end was on different days
 +                            dateSelector.endDay = dateSelector.startDay
 +                            dateSelector.endMonth = dateSelector.startMonth
 +                            dateSelector.endYear = dateSelector.startYear
@@ -14,37 +14,35 @@ diff -ru /usr/share/jolla-calendar/pages/EventEditPage.qml /home/nemo/tmp/EventE
                              dateSelector.endHour = dateSelector.startHour + 1
                              dateSelector.endMinute = dateSelector.startMinute
                              dateSelector.ensureSaneTimes(true)
-@@ -298,8 +304,8 @@
+@@ -289,8 +295,8 @@
                  
                  ComboBox {
                      id: reminder
 -
 -                    property int value: currentItem ? currentItem.value : CalendarEvent.ReminderNone
-+                                                                          //% unnecessary, overwritten by onCompleted
++                                                                          // unnecessary, overwritten by onCompleted
 +                    property int value: currentItem ? currentItem.value : CalendarEvent.Reminder15Min
  
                      //% "Remind me"
                      label: qsTrId("calendar-add-remind_me")
-@@ -385,8 +391,11 @@
-             dateSelector.setEndDate(event.endTime)
-             allDay.checked = event.allDay
+@@ -378,6 +384,9 @@
          } else {
-+
              eventName.focus = true
  
++            // 15 minutes
 +            reminder.currentIndex = 3
 +
              var date = defaultDate
              dateSelector.setStartDate(date)
              date.setHours(date.getHours() + 1)
-diff -ru /usr/share/jolla-calendar/pages/MonthPage.qml /home/nemo/tmp/MonthPage.qml
---- /usr/share/jolla-calendar/pages/MonthPage.qml	2014-05-24 16:12:28.234427204 +0200
-+++ /usr/share/jolla-calendar/pages/MonthPage.qml	2014-05-24 16:36:47.384567923 +0200
+diff -ru /usr/share/jolla-calendar/pbak2/MonthPage.qml /usr/share/jolla-calendar/pages/MonthPage.qml
+--- /usr/share/jolla-calendar/pages/MonthPage.qml	2014-06-09 21:14:35.041170951 +0200
++++ /usr/share/jolla-calendar/pages/MonthPage.qml	2014-06-09 21:11:11.686180797 +0200
 @@ -7,13 +7,24 @@
  Page {
      id: root
  
-+    //% Borrowed from EventEditPage
++    // Borrowed from EventEditPage
 +    function stripTime(date) {
 +        return new Date(date.getFullYear(), date.getMonth(), date.getDate())
 +    }
@@ -57,11 +55,11 @@ diff -ru /usr/share/jolla-calendar/pages/MonthPage.qml /home/nemo/tmp/MonthPage.
 -        d.setSeconds(now.getSeconds())
 -        d = Util.roundDateToHour(d)
 +
-+        //% moved rounding to hours to qml from Utils.js
++        // moved rounding to hours to qml from Utils.js
 +        d.setMinutes(0)
 +        d.setSeconds(0)
 +
-+        //% Only create the event at the next hour if the event is for today
++        // create the event at the next hour, (only) if the event is for today
 +        if ( stripTime(now).valueOf() == stripTime(d).valueOf() ) {
 +            d.setHours(d.getHours() + 1)
 +        }
