@@ -1,0 +1,8 @@
+{
+    "name": "Sane calendar",
+    "description": "Patches the he calendar so that new calendar entries always appear on the selected date and doesn't become 25h when moved from lasting until 00. Extra bonus: reminder defaults to rurned on (15 minutes)",
+    "category": "calendar",
+    "infos": {
+        "maintainer": "attah"
+    }
+}
