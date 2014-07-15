@@ -1,7 +1,7 @@
-diff -ru /usr/share/jolla-calendar/pbak2/EventEditPage.qml /usr/share/jolla-calendar/pages/EventEditPage.qml
---- /usr/share/jolla-calendar/pages/EventEditPage.qml	2014-06-09 23:55:30.173094778 +0200
-+++ /usr/share/jolla-calendar/pages/EventEditPage.qml	2014-06-09 21:09:44.706978917 +0200
-@@ -184,6 +184,12 @@
+diff -ru /usr/share/jolla-calendar/pbak3/EventEditPage.qml /usr/share/jolla-calendar/pages/EventEditPage.qml
+--- /usr/share/jolla-calendar/pages/EventEditPage.qml	2014-07-15 19:51:36.230402710 +0200
++++ /usr/share/jolla-calendar/pages/EventEditPage.qml	2014-07-15 19:58:42.669220364 +0200
+@@ -221,6 +221,12 @@
  
                              // end the event an hour after it starts (nice sane
                              // default)
@@ -14,8 +14,8 @@ diff -ru /usr/share/jolla-calendar/pbak2/EventEditPage.qml /usr/share/jolla-cale
                              dateSelector.endHour = dateSelector.startHour + 1
                              dateSelector.endMinute = dateSelector.startMinute
                              dateSelector.ensureSaneTimes(true)
-@@ -289,8 +295,8 @@
-                 
+@@ -357,8 +363,8 @@
+ 
                  ComboBox {
                      id: reminder
 -
@@ -25,7 +25,7 @@ diff -ru /usr/share/jolla-calendar/pbak2/EventEditPage.qml /usr/share/jolla-cale
  
                      //% "Remind me"
                      label: qsTrId("calendar-add-remind_me")
-@@ -378,6 +384,9 @@
+@@ -448,6 +454,9 @@
          } else {
              eventName.focus = true
  
@@ -35,9 +35,9 @@ diff -ru /usr/share/jolla-calendar/pbak2/EventEditPage.qml /usr/share/jolla-cale
              var date = defaultDate
              dateSelector.setStartDate(date)
              date.setHours(date.getHours() + 1)
-diff -ru /usr/share/jolla-calendar/pbak2/MonthPage.qml /usr/share/jolla-calendar/pages/MonthPage.qml
---- /usr/share/jolla-calendar/pages/MonthPage.qml	2014-06-09 21:14:35.041170951 +0200
-+++ /usr/share/jolla-calendar/pages/MonthPage.qml	2014-06-09 21:11:11.686180797 +0200
+diff -ru /usr/share/jolla-calendar/pbak3/MonthPage.qml /usr/share/jolla-calendar/pages/MonthPage.qml
+--- /usr/share/jolla-calendar/pages/MonthPage.qml	2014-07-15 19:51:36.230402710 +0200
++++ /usr/share/jolla-calendar/pages/MonthPage.qml	2014-07-15 19:58:42.669220364 +0200
 @@ -7,13 +7,24 @@
  Page {
      id: root
